@@ -37,12 +37,14 @@ public class SignIn extends AppCompatActivity {
         if(!emailText.getText().toString().equals("") && !passwordText.getText().toString().equals("")){
 
             ParseUser userEntry = new ParseUser();
-            userEntry.logInInBackground(emailText.getText().toString(), emailText.getText().toString(), new LogInCallback() {
+            userEntry.logInInBackground(emailText.getText().toString(), passwordText.getText().toString(), new LogInCallback() {
                 @Override
                 public void done(ParseUser user, ParseException e) {
                     if(e==null)
                     {
                         Toast.makeText(SignIn.this,"User" + user.getUsername() + "has been logged in",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SignIn.this,WelcomePage.class);
+                        startActivity(intent);
                     }
                     else
                     {

@@ -23,7 +23,7 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
+        setTitle("Instagram. Well, More or less.");
         getName = findViewById(R.id.getName);
         getEmail = findViewById(R.id.getEmail);
         pass = findViewById(R.id.getPass);
@@ -49,6 +49,8 @@ public class SignUp extends AppCompatActivity {
                         {
                             FancyToast.makeText(SignUp.this,"You have been Signed In!",FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true).show();
                             SignUp.dismiss();
+                            Intent intent = new Intent(SignUp.this,WelcomePage.class);
+                            startActivity(intent);
                         }
                         else
                         {
