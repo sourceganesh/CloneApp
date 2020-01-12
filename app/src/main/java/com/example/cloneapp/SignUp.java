@@ -28,6 +28,8 @@ public class SignUp extends AppCompatActivity {
         getEmail = findViewById(R.id.getEmail);
         pass = findViewById(R.id.getPass);
         passReconfirm =findViewById(R.id.getPassReconfirm);
+        if(ParseUser.getCurrentUser()!=null)
+            ParseUser.getCurrentUser().logOut();
 
     }
 
@@ -49,8 +51,6 @@ public class SignUp extends AppCompatActivity {
                         {
                             FancyToast.makeText(SignUp.this,"You have been Signed In!",FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true).show();
                             SignUp.dismiss();
-                            Intent intent = new Intent(SignUp.this,WelcomePage.class);
-                            startActivity(intent);
                         }
                         else
                         {

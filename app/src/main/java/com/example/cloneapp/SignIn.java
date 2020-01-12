@@ -31,6 +31,8 @@ public class SignIn extends AppCompatActivity {
         setTitle("Instagram. Well, More or less.");
         emailText = findViewById(R.id.emailEntry);
         passwordText = findViewById(R.id.passEntry);
+        if(ParseUser.getCurrentUser()!=null)
+            ParseUser.getCurrentUser().logOut();
     }
 
     public void logInClick(View view){
@@ -42,9 +44,7 @@ public class SignIn extends AppCompatActivity {
                 public void done(ParseUser user, ParseException e) {
                     if(e==null)
                     {
-                        Toast.makeText(SignIn.this,"User" + user.getUsername() + "has been logged in",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(SignIn.this,WelcomePage.class);
-                        startActivity(intent);
+                        Toast.makeText(SignIn.this,"User " + user.getUsername() + " has been logged in",Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
